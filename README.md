@@ -9,7 +9,7 @@ Installing PostgreSQL
     sudo systemctl start postgresql
 Setting up a PostgreSQL database 
 
-    sudo -u postgres
+    sudo su postgres
     createuser --createdb --username postgres --no-createrole --superuser --pwprompt postgresuser
     password postgrespassword
 
