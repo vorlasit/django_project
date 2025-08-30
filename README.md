@@ -7,11 +7,11 @@ Installing PostgreSQL
     sudo apt install postgresql postgresql-contrib
     sudo systemctl status postgresql
     sudo systemctl start postgresql
-Setting up a PostgreSQL database
+Setting up a PostgreSQL database 
 
-    sudo -u postgres psql
-    CREATE USER postgresuser WITH PASSWORD 'postgrespassword';
-    CREATE DATABASE recipes OWNER postgresuser;
+    sudo -u postgres
+    createuser --createdb --username postgres --no-createrole --superuser --pwprompt postgresuser
+    password postgrespassword
 
     SHOW hba_file;
 will show 
