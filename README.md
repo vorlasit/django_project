@@ -13,6 +13,8 @@ Setting up a PostgreSQL database
     createuser --createdb --username postgres --no-createrole --superuser --pwprompt postgresuser
     password postgrespassword
 
+    createdb KCDB
+
     SHOW hba_file;
 will show 
  /etc/postgresql/14/main/pg_hba.conf
@@ -26,13 +28,7 @@ Search for the following line in the file:
     local   all             all                                     md5
 Save and close the file, then restart the PostgreSQL server:
 
-    sudo systemctl restart postgresql
-You can now login to the psql interface using your new PostgreSQL user:
-
-    psql -U postgresuser -W -d recipes
-    ALTER ROLE postgresuser SET client_encoding TO 'UTF8';
-    ALTER ROLE postgresuser SET default_transaction_isolation TO 'read committed';
-    ALTER ROLE postgresuser SET timezone TO 'UTC';
+    sudo systemctl restart postgresql 
 Setting up your Django project
 
     virtualenv env && source env/bin/activate
