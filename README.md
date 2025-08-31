@@ -376,3 +376,25 @@ To round off this section, add the endpoint for handling search queries. You can
         path("recipes/delete/<int:recipe_id>/", views.delete_recipe, name="delete_recipe"),
         path("recipes/search/", views.search_recipes, name="search_recipes"),
     ]
+
+    if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+edit setting.py
+    
+    STATICFILES_DIRS = [BASE_DIR / "static"]  
+    STATIC_ROOT = BASE_DIR / "staticfiles" 
+    STORAGES = {
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+    
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
+run
+
+    python manage.py collectstatic
+
